@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE graphdesc PUBLIC "-//jrds//DTD Graph Description//EN"
+	"urn:jrds:graphdesc">
+<graphdesc>
+	<name>JVMCMSGCTime</name>
+	<graphName>jvmcmsgctime-${label}</graphName>
+	<graphTitle>JVM GC Time (CMS) for ${label}</graphTitle>
+	<unit>
+		<binary />
+	</unit>
+	<verticalLabel>%</verticalLabel>
+  
+  <add><name>CMS_Coll_Time</name></add>
+  <add><name>ParNew_Coll_Time</name></add>
+
+  <!-- Time in ms -> / 1000 -> in percent -> x 100  -> / 10 -->
+	
+  <add><name>cms_time_ratio</name><rpn>CMS_Coll_Time, 10, /</rpn><graphType>area</graphType><legend>CMS Collection Time</legend></add>
+  <add><name>parnew_time_ratio</name><rpn>ParNew_Coll_Time, 10, /</rpn><graphType>stack</graphType><legend>ParNew Collection Time</legend></add>
+	
+  <hosttree>
+		<pathelement>HOST</pathelement>
+		<pathelement>SERVICES</pathelement>
+		<pathstring>JVM</pathstring>
+		<pathstring>${label}</pathstring>
+		<pathstring>GC Time (CMS)</pathstring>
+	</hosttree>
+	<viewtree>
+		<pathelement>SERVICES</pathelement>
+		<pathstring>JVM</pathstring>
+		<pathelement>HOST</pathelement>
+		<pathstring>GC Time (CMS)</pathstring>
+		<pathstring>${label}</pathstring>
+	</viewtree>
+</graphdesc>

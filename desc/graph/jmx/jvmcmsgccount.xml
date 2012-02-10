@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE graphdesc PUBLIC "-//jrds//DTD Graph Description//EN"
+	"urn:jrds:graphdesc">
+<graphdesc>
+	<name>JVMCMSGCCount</name>
+	<graphName>jvmcmsgccount-${label}</graphName>
+	<graphTitle>JVM GC Count (CMS) for ${label}</graphTitle>
+	<unit>
+		<binary />
+	</unit>
+	<verticalLabel>Collections / s</verticalLabel>
+  
+  <add><name>CMS_Coll_Count</name><graphType>area</graphType><legend>CMS Collection Count</legend></add>
+  <add><name>ParNew_Coll_Count</name><graphType>area</graphType><legend>ParNew Collection Count</legend></add>
+	
+  <hosttree>
+		<pathelement>HOST</pathelement>
+		<pathelement>SERVICES</pathelement>
+		<pathstring>JVM</pathstring>
+		<pathstring>${label}</pathstring>
+		<pathstring>GC Collections (CMS)</pathstring>
+	</hosttree>
+	<viewtree>
+		<pathelement>SERVICES</pathelement>
+		<pathstring>JVM</pathstring>
+		<pathelement>HOST</pathelement>
+		<pathstring>GC Collections (CMS)</pathstring>
+		<pathstring>${label}</pathstring>
+	</viewtree>
+</graphdesc>
